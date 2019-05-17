@@ -20,6 +20,10 @@ wrapper {
 }
 
 configure(subprojects) { p ->
+  
+  	if (p.name == 'benchmarks')
+		return
+  
 	apply plugin: 'propdeps-maven'
 	apply plugin: 'maven'
 
@@ -101,9 +105,9 @@ def customizePom(pom, gradleProject) {
 					email = 'sbasle@pivotal.io'
 				}
 				developer {
-					id = 'rsivaram'
-					name = 'Rajini Sivaram'
-					email = 'rsivaram@pivotal.io'
+					id = 'bsideup'
+					name = 'Sergei Egorov'
+					email = 'segorov@pivotal.io'
 				}
 				developer {
 					id = 'sdeleuze'

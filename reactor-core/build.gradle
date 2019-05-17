@@ -16,7 +16,7 @@
 import me.champeau.gradle.japicmp.JapicmpTask
 
 apply plugin: 'idea' //needed to avoid IDEA seeing the jmh folder as source
-apply plugin: 'me.champeau.gradle.jmh'
+apply plugin: 'osgi'
 apply plugin: 'org.unbroken-dome.test-sets'
 
 sourceSets {
@@ -81,11 +81,6 @@ dependencies {
   noMicrometerTestCompile sourceSets.main.output
   noMicrometerTestCompile sourceSets.test.output
   noMicrometerTestCompile configurations.testCompile
-}
-
-jmh {
-  include = ["reactor.AssemblyTraceBenchmark.*"]
-  resultFormat = 'JSON'
 }
 
 task downloadBaseline {
@@ -273,7 +268,7 @@ if (JavaVersion.current().java9Compatible) {
 	}
   }
 
-  [jar, jmhJar]*.each {
+  [jar]*.each {
 	it.from sourceSets.java9.output
   }
 
